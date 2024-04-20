@@ -14,8 +14,6 @@ import Loading from '../components/comman/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
 const Loginpage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [checked, setChecked] = useState(false);

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import girlWithLaptopLight from "../util/images/girl-with-laptop-light.png";
 import { useFormik } from 'formik';
