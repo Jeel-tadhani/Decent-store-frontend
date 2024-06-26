@@ -97,9 +97,8 @@ const FaqModel = ({ open, onClose }: FaqModelProps) => {
 							<SelectValue placeholder="Select audience" />
 						</SelectTrigger>
 						<SelectContent className="z-[99999]">
-							<SelectItem value="SME Admin">SME Admin</SelectItem>
-							<SelectItem value="Trainer Admin">Trainer Admin</SelectItem>
-							<SelectItem value="Client">Client</SelectItem>
+							<SelectItem value="Seller">Seller</SelectItem>
+							<SelectItem value="User">User</SelectItem>
 						</SelectContent>
 					</Select>
 					{errors.targetAudience && (

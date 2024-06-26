@@ -20,7 +20,6 @@ import { setPath } from "@/redux/Reducer/PathReducer";
 
 const BannerSliderPage = () => {
 	const [openDelete, setOpenDelete] = useState<boolean | Banner>(false);
-	const { isClient, clientId } = useSelector((state: any) => state.user);
 
 	const dispatch = useDispatch();
 
@@ -28,14 +27,6 @@ const BannerSliderPage = () => {
 
 	const queryClient = useQueryClient();
 
-	const {
-		data: bannerList,
-		isPending,
-		refetch,
-	} = useQuery({
-		queryKey: [QUERY_KEYS.bannerList],
-		queryFn: () => fetchBanner(isClient, clientId),
-	});
 	const { mutate: delete_banner, isPending: deletePanding } = useMutation({
 		mutationFn: (bannerId: string) => deleteBanner(bannerId),
 		onSuccess: () => {
@@ -81,10 +72,6 @@ const BannerSliderPage = () => {
 		});
 	};
 
-	useEffect(() => {
-		refetch();
-	}, [clientId]);
-
 	return (
 		<div className="pb-[36px] bg-primary-foreground rounded-[10px] h-full font-nunitoSans">
 			<div className="border-b-2 pb-[15px] flex justify-between pl-[22px] pr-[20px] items-center pt-[22px]">
@@ -103,7 +90,7 @@ const BannerSliderPage = () => {
 					ADD NEW
 				</Button>
 			</div>
-			{bannerList?.data?.data?.map((banner: Banner) => {
+			{[]?.map((banner: Banner) => {
 				return (
 					<div className="mt-[17px] mx-[20px] mb-[27px]" key={banner.id}>
 						<div className="flex justify-between">
@@ -115,7 +102,7 @@ const BannerSliderPage = () => {
 										handleStatusUpdate(checked, banner);
 									}}
 									checked={banner.status === "Active"}
-									disabled={isClient && !bannerList?.data.clientData}
+								// disabled={isClient && !bannerList?.data.clientData}
 								/>
 								<div className="flex items-center gap-[15px]">
 									<button
@@ -131,12 +118,12 @@ const BannerSliderPage = () => {
 												])
 											)
 										}
-										disabled={isClient && !bannerList?.data.clientData}>
+									>
 										<img src={pencilprimary} alt="edit icon" />
 									</button>
 									<button
 										onClick={() => setOpenDelete(banner)}
-										disabled={isClient && !bannerList?.data.clientData}>
+									>
 										<img src={deletered} alt="delete icon" />
 									</button>
 								</div>
@@ -153,7 +140,7 @@ const BannerSliderPage = () => {
 				);
 			})}
 
-			<Loading isLoading={isPending || deletePanding || updatePanding} />
+			<Loading isLoading={false} />
 			<AreYouSureModal
 				open={openDelete as boolean}
 				onClose={() => setOpenDelete(false)}
