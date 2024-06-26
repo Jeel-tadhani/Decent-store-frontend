@@ -11,25 +11,27 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import loginIcon from "../util/images/loginIcon.svg";
 import Loading from '../components/comman/Loading';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useToast } from '@/components/ui/use-toast';
 
 const RegisterPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [checked, setChecked] = useState(false);
 
     const navigate = useNavigate();
+    const { toast } = useToast();
 
     const { mutate: register_user, isPending: registerPanding } = useMutation({
         mutationFn: Register,
-        onSuccess: (data) => {
-            const user = data.data.data.query;
-            console.log(user, data)
+        onSuccess: () => {
+            toast({ title: "user has been registered" })
             navigate("/login");
-            toast.success("user has been registered")
         },
         onError: (error: ErrorType) => {
-            toast.error(error.data.message)
+            toast({
+                variant: "destructive",
+                title: error.data.message,
+            });
         },
     });
 
@@ -147,11 +149,11 @@ const RegisterPage = () => {
                                     }}
                                     inputProps={{ 'aria-label': 'primary checkbox' }}
                                 />
-                                <p className='text-[#32475C99] '>I agree to <span className='text-primary'>privacy policy & terms</span></p>
+                                <p className='text-[#32475C99] '>I agree to <span className='text-[#696CFF]'>privacy policy & terms</span></p>
                             </div>
                         </div>
 
-                        <Button type='submit' variant="contained" className='!bg-primary text-lg'>sign up</Button>
+                        <Button type='submit' variant="contained" className='!bg-[#696CFF] text-lg'>sign up</Button>
                     </form>
                     <div className='flex justify-center gap-1 mt-4 text-[14px]'>
                         <p className='text-[#32475C99]'>Already have an account?</p>
@@ -160,7 +162,6 @@ const RegisterPage = () => {
                 </div>
             </div>
             <Loading isLoading={registerPanding} />
-            <ToastContainer />
         </div >
     );
 };

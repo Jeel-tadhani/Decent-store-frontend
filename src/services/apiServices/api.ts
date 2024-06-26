@@ -1,7 +1,7 @@
+import { ErrorData, ErrorType } from "@/types/Errors";
 import axios, { AxiosError } from "axios";
-import { ErrorData, ErrorType } from "../../types/Errors";
 
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
+export const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 interface AxiosParams {
     baseURL?: string;
@@ -43,6 +43,11 @@ const api = ({
             "Content-Type": "multipart/form-data",
         };
     }
+    const token = localStorage.getItem("token");
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+
 
     instance.interceptors.response.use(
         (res) => {
