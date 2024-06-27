@@ -55,15 +55,15 @@ function App() {
 					element: <AccountSetting />,
 				},
 				{
-					path: "/companies",
+					path: "/users",
 					element: <CompaniesPage />,
 				},
 				{
-					path: "/companiesform/:companyId",
+					path: "/userform/:companyId",
 					element: <CompanyFormData />,
 				},
 				{
-					path: "/companies-details/:companyId",
+					path: "/user-details/:companyId",
 					element: <CompanyDetails />,
 				},
 				{

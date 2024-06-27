@@ -130,15 +130,15 @@ function CompanyFormData() {
                         <div className="flex justify-end">
                             <button className="w-[121px] h-[52px] bg-[#58BA66] text-white rounded-[10px]" type="button" onClick={() => dispatch(setPath([
                                 {
-                                    name: "Company Management",
+                                    name: "User Management",
                                     link: null,
                                 },
                                 {
-                                    name: "Companies",
-                                    link: "/companies",
+                                    name: "Users",
+                                    link: "/users",
                                 }
                             ]))} >
-                                Submit
+                                Back
                             </button>
                         </div>
 

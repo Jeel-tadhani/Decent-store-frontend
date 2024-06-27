@@ -4,17 +4,10 @@ import { RxDashboard } from "react-icons/rx";
 import { RiShutDownLine } from "react-icons/ri";
 import { PiUserSquareFill } from "react-icons/pi";
 import { AiOutlineGlobal } from "react-icons/ai";
-import { FiUserPlus } from "react-icons/fi";
-import { BsTicketPerforated } from "react-icons/bs";
 import { useEffect, useMemo, useState } from "react";
 import DropdownMenu from "./DropdownMenu";
-import { IoSpeedometerOutline } from "react-icons/io5";
-import { TfiBook } from "react-icons/tfi";
-import { FiSettings } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setPath } from "@/redux/Reducer/PathReducer";
-import { UserRole } from "@/types/UserRole";
-import { jwtDecode } from "jwt-decode";
 
 const Sidebar = ({
 	setSidebarOpen,
@@ -37,13 +30,13 @@ const Sidebar = ({
 				icon: <RxDashboard size={22} />,
 			},
 			{
-				name: "Seller Management",
-				link: "/seller-management",
+				name: "User Management",
+				link: "/user-management",
 				icon: <PiUserSquareFill size={22} />,
 				subMenus: [
 					{
-						subName: "Sellers",
-						link: "/companies",
+						subName: "Users",
+						link: "/users",
 					}
 				],
 			},

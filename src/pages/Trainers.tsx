@@ -32,7 +32,7 @@ function Trainers() {
 
 
     console.log(data);
-    
+
 
     const colums: ColumnDef<Trainer>[] = [
         {
@@ -240,15 +240,15 @@ function Trainers() {
                             onClick={() =>
                                 dispatch(
                                     setPath([
-                                        { name: "Company Management", link: null },
+                                        { name: "User Management", link: null },
                                         ,
                                         {
-                                            name: "Companies",
-                                            link: "/companies",
+                                            name: "Users",
+                                            link: "/users",
                                         },
                                         {
                                             name: row.original.name,
-                                            link: `/companies-details/${row.original.id}`,
+                                            link: `/user-details/${row.original.id}`,
                                         },
                                     ])
                                 )
@@ -290,7 +290,7 @@ function Trainers() {
                     Training Organisations
                 </h2>
             </div>
-            <DataTable columns={colums} 
+            <DataTable columns={colums}
                 data={data?.data?.data || []}
             />
 

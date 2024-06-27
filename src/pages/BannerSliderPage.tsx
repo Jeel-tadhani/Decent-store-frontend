@@ -2,20 +2,19 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import pencilprimary from "/assets/icons/pencilprimary.svg";
 import deletered from "/assets/icons/deletered.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "@/lib/constants";
 import {
 	deleteBanner,
-	fetchBanner,
 	updateBanner,
 } from "@/services/apiServices/bannerServices";
 import Loading from "@/components/comman/Loading";
 import { Banner } from "@/types";
 import AreYouSureModal from "@/components/Modal/DeleteModal";
 import { ErrorType } from "@/types/Errors";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPath } from "@/redux/Reducer/PathReducer";
 
 const BannerSliderPage = () => {
@@ -27,7 +26,7 @@ const BannerSliderPage = () => {
 
 	const queryClient = useQueryClient();
 
-	const { mutate: delete_banner, isPending: deletePanding } = useMutation({
+	const { mutate: delete_banner } = useMutation({
 		mutationFn: (bannerId: string) => deleteBanner(bannerId),
 		onSuccess: () => {
 			toast({ title: "Banner delete Successfully" });
@@ -43,7 +42,7 @@ const BannerSliderPage = () => {
 			setOpenDelete(false);
 		},
 	});
-	const { mutate: update_banner, isPending: updatePanding } = useMutation({
+	const { mutate: update_banner } = useMutation({
 		mutationFn: (data: { banner: Banner; id: string }) =>
 			updateBanner(data.banner, data.id),
 		onSuccess: () => {

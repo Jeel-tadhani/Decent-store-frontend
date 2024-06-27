@@ -51,12 +51,12 @@ function CompanyDetails({ }) {
 			queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.userList] });
 			dispatch(setPath([
 				{
-					name: "Company Management",
+					name: "User Management",
 					link: null,
 				},
 				{
-					name: "Companies",
-					link: "/companies",
+					name: "Users",
+					link: "/users",
 				}
 			]))
 		},

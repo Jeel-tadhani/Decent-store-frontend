@@ -275,15 +275,15 @@ const CompaniesPage = () => {
 							onClick={() =>
 								dispatch(
 									setPath([
-										{ name: "Company Management", link: null },
+										{ name: "User Management", link: null },
 										,
 										{
-											name: "Companies",
-											link: "/companies",
+											name: "Users",
+											link: "/users",
 										},
 										{
 											name: row.original.user_name,
-											link: `/companies-details/${row.original?.user_id}`,
+											link: `/user-details/${row.original?.user_id}`,
 										},
 									])
 								)
@@ -319,15 +319,15 @@ const CompaniesPage = () => {
 
 		dispatch(
 			setPath([
-				{ name: "Company Management", link: null },
+				{ name: "User Management", link: null },
 				,
 				{
-					name: "Companies",
-					link: "/companies",
+					name: "Users",
+					link: "/users",
 				},
 				{
 					name: data.user_name,
-					link: `/companiesform/${data.user_id}`,
+					link: `/user-details/${data.user_id}`,
 				},
 			])
 		);

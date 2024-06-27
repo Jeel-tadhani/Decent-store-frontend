@@ -1,14 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BsPeopleFill } from "react-icons/bs";
-import { FaStar } from "react-icons/fa6";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
 import { useState } from "react";
 import CourseVideo from "@/components/CourseVideo/CourseVideo";
 import Feedback from "./Feedback";
